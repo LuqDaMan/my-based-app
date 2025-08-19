@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from '@use-gesture/react';
 import { FictionalCouple } from '@/lib/types';
@@ -15,7 +15,6 @@ interface CoupleSwipeStackProps {
 
 export function CoupleSwipeStack({ couples, currentIndex, onSwipe }: CoupleSwipeStackProps) {
   const { setSwipeInProgress, nextCouple } = usePredictionStore();
-  const [gone] = useState(() => new Set());
   
   const currentCouple = couples[currentIndex];
   const nextCoupleData = currentIndex + 1 < couples.length ? couples[currentIndex + 1] : null;
@@ -41,9 +40,7 @@ export function CoupleSwipeStack({ couples, currentIndex, onSwipe }: CoupleSwipe
   const bind = useDrag(({
     active,
     movement: [mx, my],
-    direction: [xDir, yDir],
-    velocity: [vx, vy],
-    cancel
+    velocity: [vx, vy]
   }) => {
     if (!currentCouple) return;
 

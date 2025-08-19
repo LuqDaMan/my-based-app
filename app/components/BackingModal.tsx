@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { FictionalCouple, Milestone } from '@/lib/types';
 import { Button } from './DemoComponents';
 import { Icon } from './DemoComponents';
@@ -128,6 +129,7 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
             size="sm"
             icon={<Icon name="x" size="sm" />}
           >
+            Close
           </Button>
         </div>
 
@@ -138,9 +140,11 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
             <div className="flex items-center justify-center space-x-4 mb-3">
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-purple-200">
-                  <img
+                  <Image
                     src={couple.partner1.avatar}
                     alt={couple.partner1.name}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -156,9 +160,11 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
               
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-pink-200">
-                  <img
+                  <Image
                     src={couple.partner2.avatar}
                     alt={couple.partner2.name}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -195,7 +201,7 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center space-x-2">
                         <Icon 
-                          name={getMilestoneTypeIcon(milestone.type) as any} 
+                          name={getMilestoneTypeIcon(milestone.type) as 'message-circle' | 'calendar' | 'heart' | 'clock' | 'target'} 
                           size="sm" 
                           className={isSelected ? 'text-purple-600' : 'text-gray-500'} 
                         />

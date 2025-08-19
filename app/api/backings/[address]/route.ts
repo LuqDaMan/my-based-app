@@ -26,11 +26,12 @@ const MOCK_USER_BACKINGS: { [address: string]: UserBacking[] } = {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { address: string } }
+  { params }: { params: Promise<{ address: string }> }
 ) {
   try {
-    const address = params.address.toLowerCase();
-    const userBackings = MOCK_USER_BACKINGS[address] || [];
+    const { address } = await params;
+    const addressLower = address.toLowerCase();
+    const userBackings = MOCK_USER_BACKINGS[addressLower] || [];
     
     return NextResponse.json({ 
       backings: userBackings,
@@ -50,10 +51,11 @@ export async function GET(
 // Add a new backing (called after successful blockchain transaction)
 export async function POST(
   request: NextRequest,
-  { params }: { params: { address: string } }
+  { params }: { params: Promise<{ address: string }> }
 ) {
   try {
-    const address = params.address.toLowerCase();
+    const { address } = await params;
+    const addressLower = address.toLowerCase();
     const { coupleId, milestoneId, amount } = await request.json();
     
     const newBacking: UserBacking = {
@@ -66,10 +68,10 @@ export async function POST(
     };
     
     // In production, save to database
-    if (!MOCK_USER_BACKINGS[address]) {
-      MOCK_USER_BACKINGS[address] = [];
+    if (!MOCK_USER_BACKINGS[addressLower]) {
+      MOCK_USER_BACKINGS[addressLower] = [];
     }
-    MOCK_USER_BACKINGS[address].push(newBacking);
+    MOCK_USER_BACKINGS[addressLower].push(newBacking);
     
     return NextResponse.json({ 
       success: true, 

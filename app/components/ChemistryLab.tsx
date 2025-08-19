@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { usePredictionStore } from '@/lib/store';
 import { FictionalCouple } from '@/lib/types';
 import { CoupleSwipeStack } from './CoupleSwipeStack';
@@ -27,11 +27,7 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch couples data on component mount
-  useEffect(() => {
-    fetchCouples();
-  }, []);
-
-  const fetchCouples = async () => {
+  const fetchCouples = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -49,7 +45,11 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [setCouples]);
+
+  useEffect(() => {
+    fetchCouples();
+  }, [fetchCouples]);
 
   const handleCoupleSwipe = (action: 'left' | 'right' | 'up', couple: FictionalCouple) => {
     if (action === 'right') {
@@ -110,7 +110,6 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
     );
   }
 
-  const currentCouple = couples[currentCoupleIndex];
   const hasMoreCouples = currentCoupleIndex < couples.length - 1;
 
   return (
@@ -176,7 +175,7 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
       {!hasMoreCouples && currentCoupleIndex >= couples.length - 1 && (
         <div className="text-center mt-4 p-4 bg-gray-50 rounded-lg">
           <Icon name="check-circle" size="lg" className="mx-auto mb-2 text-green-500" />
-          <p className="font-medium text-gray-700">You've seen all couples!</p>
+          <p className="font-medium text-gray-700">You&apos;ve seen all couples!</p>
           <p className="text-sm text-gray-500 mt-1">
             Check back later for new matches to support
           </p>

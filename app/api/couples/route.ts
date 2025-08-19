@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { FictionalCouple, Milestone } from '@/lib/types';
+import { FictionalCouple } from '@/lib/types';
 
 // Fictional couples data for Chemistry Lab MVP
 const FICTIONAL_COUPLES: FictionalCouple[] = [

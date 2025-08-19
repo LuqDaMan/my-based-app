@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { FictionalCouple } from '@/lib/types';
 import { Icon } from './DemoComponents';
 
@@ -75,9 +76,11 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
         {/* Partner 1 */}
         <div className="text-center">
           <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-purple-200">
-            <img
+            <Image
               src={couple.partner1.avatar}
               alt={couple.partner1.name}
+              width={64}
+              height={64}
               className="w-full h-full object-cover"
             />
           </div>
@@ -98,9 +101,11 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
         {/* Partner 2 */}
         <div className="text-center">
           <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-pink-200">
-            <img
+            <Image
               src={couple.partner2.avatar}
               alt={couple.partner2.name}
+              width={64}
+              height={64}
               className="w-full h-full object-cover"
             />
           </div>
