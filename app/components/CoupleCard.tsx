@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FictionalCouple } from '@/lib/types';
 import { Icon } from './DemoComponents';
+import { Badge } from '@coinbase/onchainkit/identity';
 
 interface CoupleCardProps {
   couple: FictionalCouple;
@@ -55,8 +56,14 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
               Matched {getDaysAgo(couple.matchedAt)}
             </span>
           </div>
-          <div className={`px-2 py-1 rounded-full text-xs font-bold ${getChemistryColor(couple.chemistryScore)}`}>
-            {couple.chemistryScore}% Chemistry
+          <div className="flex items-center space-x-2">
+            <Badge 
+              className="w-4 h-4"
+              tooltip={`Chemistry Score: ${couple.chemistryScore}%`}
+            />
+            <span className={`text-xs font-bold ${getChemistryColor(couple.chemistryScore).replace('bg-', 'text-').replace('-100', '-600')}`}>
+              {couple.chemistryScore}% Chemistry
+            </span>
           </div>
         </div>
         

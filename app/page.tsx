@@ -11,6 +11,7 @@ import {
   Address,
   Avatar,
   EthBalance,
+  Badge,
 } from "@coinbase/onchainkit/identity";
 import {
   ConnectWallet,
@@ -18,6 +19,7 @@ import {
   WalletDropdown,
   WalletDropdownDisconnect,
 } from "@coinbase/onchainkit/wallet";
+import { FundButton } from "@coinbase/onchainkit/fund";
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { Button } from "./components/DemoComponents";
 import { Icon } from "./components/DemoComponents";
@@ -97,10 +99,15 @@ export default function App() {
                 <WalletDropdown>
                   <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
                     <Avatar />
-                    <Name />
+                    <Name>
+                      <Badge tooltip="Verified Base User" />
+                    </Name>
                     <Address />
                     <EthBalance />
                   </Identity>
+                  <div className="px-4 py-2 border-t border-gray-200">
+                    <FundButton />
+                  </div>
                   <WalletDropdownDisconnect />
                 </WalletDropdown>
               </Wallet>

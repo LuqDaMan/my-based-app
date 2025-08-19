@@ -14,7 +14,6 @@ import {
   TransactionStatusAction,
   TransactionStatusLabel,
 } from "@coinbase/onchainkit/transaction";
-import toast from "react-hot-toast";
 import type { LifecycleStatus } from "@coinbase/onchainkit/transaction";
 
 interface ProfileFormData {
@@ -203,25 +202,25 @@ export function GaslessProfileCreation({ onComplete, onBack }: GaslessProfileCre
 
   const handleCreateProfile = async () => {
     if (!isConnected || !address) {
-      toast.error("Please connect your wallet first");
+      console.error("Please connect your wallet first");
       return;
     }
 
     if (hasProfile) {
-      toast.error("Profile already exists");
+      console.error("Profile already exists");
       return;
     }
 
     // Check network before proceeding
     if (!isCorrectNetwork) {
       const { instructions } = promptNetworkSwitch();
-      toast.error(instructions, { duration: 5000 });
+      console.error(instructions);
       return;
     }
 
     const age = calculateAge();
     if (age < 18) {
-      toast.error("You must be 18 or older to create a profile");
+      console.error("You must be 18 or older to create a profile");
       return;
     }
     
@@ -233,13 +232,13 @@ export function GaslessProfileCreation({ onComplete, onBack }: GaslessProfileCre
     console.log('Paymaster endpoint:', process.env.NEXT_PUBLIC_PAYMASTER_ENDPOINT);
     
     if (status.statusName === 'success') {
-      toast.success("Profile created successfully!");
+      console.log("Profile created successfully!");
       setTimeout(() => {
         onComplete();
       }, 2000);
     } else if (status.statusName === 'error') {
       console.error('Transaction error:', status);
-      toast.error("Failed to create profile");
+      console.error("Failed to create profile");
     }
   };
 
@@ -299,18 +298,18 @@ export function GaslessProfileCreation({ onComplete, onBack }: GaslessProfileCre
               method: 'wallet_switchEthereumChain',
               params: [{ chainId: `0x${baseSepolia.id.toString(16)}` }],
             });
-            toast.success("Network switched to Base Sepolia!");
+            console.log("Network switched to Base Sepolia!");
           } catch (directError: unknown) {
             console.error('Direct switch also failed:', directError);
             const directErrorCode = (directError as { code?: number })?.code;
             if (directErrorCode === 4902) {
-              toast.error("Base Sepolia network not found in your wallet. Please add it manually.");
+              console.error("Base Sepolia network not found in your wallet. Please add it manually.");
             } else {
-              toast.error("Unable to switch network automatically. Please switch manually in your wallet.");
+              console.error("Unable to switch network automatically. Please switch manually in your wallet.");
             }
           }
         } else {
-          toast.success("Network switched to Base Sepolia!");
+          console.log("Network switched to Base Sepolia!");
         }
       }, 1000);
       
@@ -324,13 +323,13 @@ export function GaslessProfileCreation({ onComplete, onBack }: GaslessProfileCre
       console.error("Error message:", errorMessage);
       
       if (errorCode === 4902 || errorCode === -32602) {
-        toast.error("Please add Base Sepolia network to your wallet first");
+        console.error("Please add Base Sepolia network to your wallet first");
       } else if (errorCode === 4001) {
-        toast.error("Network switch rejected by user");
+        console.error("Network switch rejected by user");
       } else if (errorMessage.includes('does not support')) {
-        toast.error("Your wallet doesn't support automatic network switching");
+        console.error("Your wallet doesn't support automatic network switching");
       } else {
-        toast.error(`Failed to switch network: ${errorMessage || 'Unknown error'}`);
+        console.error(`Failed to switch network: ${errorMessage || 'Unknown error'}`);
       }
     }
     

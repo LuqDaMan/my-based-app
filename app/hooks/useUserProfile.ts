@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 // parseEther removed - not needed for profile contract
-import toast from "react-hot-toast";
 
 // Contract ABI for UserProfile.sol
 const USER_PROFILE_ABI = [
@@ -292,42 +291,42 @@ export function useUserProfile() {
     interestedIn: string[]
   ) => {
     if (!isConnected || !address) {
-      toast.error("Please connect your wallet first");
+      console.error("Please connect your wallet first");
       return false;
     }
 
     if (hasProfile) {
-      toast.error("Profile already exists");
+      console.error("Profile already exists");
       return false;
     }
 
     if (age < 18 || age > 100) {
-      toast.error("Age must be between 18 and 100");
+      console.error("Age must be between 18 and 100");
       return false;
     }
 
     if (!name.trim()) {
-      toast.error("Name cannot be empty");
+      console.error("Name cannot be empty");
       return false;
     }
 
     if (!gender.trim()) {
-      toast.error("Gender cannot be empty");
+      console.error("Gender cannot be empty");
       return false;
     }
 
     if (lookingFor.length === 0) {
-      toast.error("Looking for cannot be empty");
+      console.error("Looking for cannot be empty");
       return false;
     }
 
     if (!aboutMe.trim()) {
-      toast.error("About me cannot be empty");
+      console.error("About me cannot be empty");
       return false;
     }
 
     if (interestedIn.length === 0) {
-      toast.error("Interested in cannot be empty");
+      console.error("Interested in cannot be empty");
       return false;
     }
 
@@ -341,7 +340,7 @@ export function useUserProfile() {
         args: [name, BigInt(age), gender, lookingFor, aboutMe, interestedIn]
       });
 
-      toast.success("Profile creation transaction submitted!");
+      console.log("Profile creation transaction submitted!");
       
       // Refetch data after transaction
       setTimeout(() => {
@@ -355,23 +354,23 @@ export function useUserProfile() {
       const errorMessage = error instanceof Error ? error.message : String(error);
       
       if (errorMessage.includes("Profile already exists")) {
-        toast.error("Profile already exists");
+        console.error("Profile already exists");
       } else if (errorMessage.includes("Invalid age")) {
-        toast.error("Invalid age (must be 18-100)");
+        console.error("Invalid age (must be 18-100)");
       } else if (errorMessage.includes("Name cannot be empty")) {
-        toast.error("Name cannot be empty");
+        console.error("Name cannot be empty");
       } else if (errorMessage.includes("Gender cannot be empty")) {
-        toast.error("Gender cannot be empty");
+        console.error("Gender cannot be empty");
       } else if (errorMessage.includes("Looking for cannot be empty")) {
-        toast.error("Looking for cannot be empty");
+        console.error("Looking for cannot be empty");
       } else if (errorMessage.includes("About me cannot be empty")) {
-        toast.error("About me cannot be empty");
+        console.error("About me cannot be empty");
       } else if (errorMessage.includes("Interested in cannot be empty")) {
-        toast.error("Interested in cannot be empty");
+        console.error("Interested in cannot be empty");
       } else if (errorMessage.includes("User rejected")) {
-        toast.error("Transaction was rejected");
+        console.error("Transaction was rejected");
       } else {
-        toast.error("Failed to create profile. Please try again.");
+        console.error("Failed to create profile. Please try again.");
       }
       
       return false;
@@ -389,42 +388,42 @@ export function useUserProfile() {
     interestedIn: string[]
   ) => {
     if (!isConnected || !address) {
-      toast.error("Please connect your wallet first");
+      console.error("Please connect your wallet first");
       return false;
     }
 
     if (!hasProfile) {
-      toast.error("Profile does not exist");
+      console.error("Profile does not exist");
       return false;
     }
 
     if (age < 18 || age > 100) {
-      toast.error("Age must be between 18 and 100");
+      console.error("Age must be between 18 and 100");
       return false;
     }
 
     if (!name.trim()) {
-      toast.error("Name cannot be empty");
+      console.error("Name cannot be empty");
       return false;
     }
 
     if (!gender.trim()) {
-      toast.error("Gender cannot be empty");
+      console.error("Gender cannot be empty");
       return false;
     }
 
     if (lookingFor.length === 0) {
-      toast.error("Looking for cannot be empty");
+      console.error("Looking for cannot be empty");
       return false;
     }
 
     if (!aboutMe.trim()) {
-      toast.error("About me cannot be empty");
+      console.error("About me cannot be empty");
       return false;
     }
 
     if (interestedIn.length === 0) {
-      toast.error("Interested in cannot be empty");
+      console.error("Interested in cannot be empty");
       return false;
     }
 
@@ -438,7 +437,7 @@ export function useUserProfile() {
         args: [name, BigInt(age), gender, lookingFor, aboutMe, interestedIn]
       });
 
-      toast.success("Profile update transaction submitted!");
+      console.log("Profile update transaction submitted!");
       
       // Refetch data after transaction
       setTimeout(() => {
@@ -451,23 +450,23 @@ export function useUserProfile() {
       const errorMessage = error instanceof Error ? error.message : String(error);
       
       if (errorMessage.includes("Profile does not exist")) {
-        toast.error("Profile does not exist");
+        console.error("Profile does not exist");
       } else if (errorMessage.includes("Invalid age")) {
-        toast.error("Invalid age (must be 18-100)");
+        console.error("Invalid age (must be 18-100)");
       } else if (errorMessage.includes("Name cannot be empty")) {
-        toast.error("Name cannot be empty");
+        console.error("Name cannot be empty");
       } else if (errorMessage.includes("Gender cannot be empty")) {
-        toast.error("Gender cannot be empty");
+        console.error("Gender cannot be empty");
       } else if (errorMessage.includes("Looking for cannot be empty")) {
-        toast.error("Looking for cannot be empty");
+        console.error("Looking for cannot be empty");
       } else if (errorMessage.includes("About me cannot be empty")) {
-        toast.error("About me cannot be empty");
+        console.error("About me cannot be empty");
       } else if (errorMessage.includes("Interested in cannot be empty")) {
-        toast.error("Interested in cannot be empty");
+        console.error("Interested in cannot be empty");
       } else if (errorMessage.includes("User rejected")) {
-        toast.error("Transaction was rejected");
+        console.error("Transaction was rejected");
       } else {
-        toast.error("Failed to update profile. Please try again.");
+        console.error("Failed to update profile. Please try again.");
       }
       
       return false;

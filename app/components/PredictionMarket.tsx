@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { SwipeStack } from './SwipeStack';
 import { usePredictionStore } from '@/lib/store';
 import { SwipeAction, type PredictionMarket } from '@/lib/types';
-import { toast } from 'react-hot-toast';
 import { useAccount } from 'wagmi';
 import { Button } from './DemoComponents';
 
@@ -82,22 +81,20 @@ export function PredictionMarket({ setActiveTab }: PredictionMarketProps) {
 
     const handleSwipe = async (action: SwipeAction) => {
         if (!isConnected || !address) {
-            toast.error('Please connect your wallet first');
+            console.error('Please connect your wallet first');
             return;
         }
 
         try {
             if (action.direction === 'up') {
                 // Skip - just move to next
-                toast('Skipped! 👆', { icon: '⏭️' });
+                console.log('Skipped! 👆');
             } else {
                 // Make prediction
                 const prediction = action.direction === 'right' ? 'YES' : 'NO';
                 const emoji = action.direction === 'right' ? '🚀' : '📉';
 
-                toast.success(`Predicted ${prediction}! ${emoji}`, {
-                    duration: 2000,
-                });
+                console.log(`Predicted ${prediction}! ${emoji}`);
 
                 // TODO: Call smart contract to place bet
                 // await placeBet(action.marketId, action.prediction, action.amount);
@@ -108,7 +105,7 @@ export function PredictionMarket({ setActiveTab }: PredictionMarketProps) {
 
         } catch (error) {
             console.error('Swipe action failed:', error);
-            toast.error('Failed to process prediction');
+            console.error('Failed to process prediction');
         }
     };
 
