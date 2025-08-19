@@ -9,10 +9,10 @@ import { Button } from './DemoComponents';
 import { Icon } from './DemoComponents';
 
 interface ChemistryLabProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab?: (tab: string) => void;
 }
 
-export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
+export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
   const {
     couples,
     setCouples,
@@ -116,14 +116,17 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <Button
-          onClick={() => setActiveTab('home')}
-          variant="ghost"
-          size="sm"
-          icon={<Icon name="arrow-left" size="sm" />}
-        >
-          Back
-        </Button>
+        {setActiveTab && (
+          <Button
+            onClick={() => setActiveTab('home')}
+            variant="ghost"
+            size="sm"
+            icon={<Icon name="arrow-left" size="sm" />}
+          >
+            Back
+          </Button>
+        )}
+        {!setActiveTab && <div />}
         
         <div className="text-center">
           <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -134,14 +137,17 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
           </p>
         </div>
         
-        <Button
-          onClick={() => setActiveTab('portfolio')}
-          variant="ghost"
-          size="sm"
-          icon={<Icon name="user" size="sm" />}
-        >
-          Portfolio
-        </Button>
+        {setActiveTab && (
+          <Button
+            onClick={() => setActiveTab('portfolio')}
+            variant="ghost"
+            size="sm"
+            icon={<Icon name="user" size="sm" />}
+          >
+            Portfolio
+          </Button>
+        )}
+        {!setActiveTab && <div />}
       </div>
 
       {/* Instructions */}
@@ -179,13 +185,15 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps) {
           <p className="text-sm text-gray-500 mt-1">
             Check back later for new matches to support
           </p>
-          <Button
-            onClick={() => setActiveTab('portfolio')}
-            className="mt-3"
-            size="sm"
-          >
-            View My Backings
-          </Button>
+          {setActiveTab && (
+            <Button
+              onClick={() => setActiveTab('portfolio')}
+              className="mt-3"
+              size="sm"
+            >
+              View My Backings
+            </Button>
+          )}
         </div>
       )}
 

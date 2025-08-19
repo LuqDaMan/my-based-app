@@ -23,18 +23,11 @@ import { FundButton } from "@coinbase/onchainkit/fund";
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { Button } from "./components/DemoComponents";
 import { Icon } from "./components/DemoComponents";
-import { Home } from "./components/DemoComponents";
-import { Features } from "./components/DemoComponents";
-import { PredictionMarket } from "./components/PredictionMarket";
-import { GaslessProfileCreation } from "./components/GaslessProfileCreation";
-import { ProfileStatus } from "./components/ProfileStatus";
 import { ChemistryLab } from "./components/ChemistryLab";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
-  const [activeTab, setActiveTab] = useState("chemistry-lab");
-  const [showProfileCreation, setShowProfileCreation] = useState(false);
 
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
@@ -117,25 +110,7 @@ export default function App() {
         </header>
 
         <main className="flex-1">
-          {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
-          {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
-          {activeTab === "prediction-market" && <PredictionMarket setActiveTab={setActiveTab} />}
-          {activeTab === "chemistry-lab" && <ChemistryLab setActiveTab={setActiveTab} />}
-          {activeTab === "profile" && (
-            showProfileCreation ? (
-              <GaslessProfileCreation 
-                onComplete={() => {
-                  setShowProfileCreation(false);
-                  setActiveTab("home");
-                }}
-                onBack={() => setShowProfileCreation(false)}
-              />
-            ) : (
-              <ProfileStatus 
-                onCreateProfile={() => setShowProfileCreation(true)}
-              />
-            )
-          )}
+          <ChemistryLab />
         </main>
 
         <footer className="mt-2 pt-4 flex justify-center">
