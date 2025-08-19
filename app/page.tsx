@@ -26,11 +26,12 @@ import { Features } from "./components/DemoComponents";
 import { PredictionMarket } from "./components/PredictionMarket";
 import { GaslessProfileCreation } from "./components/GaslessProfileCreation";
 import { ProfileStatus } from "./components/ProfileStatus";
+import { ChemistryLab } from "./components/ChemistryLab";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("chemistry-lab");
   const [showProfileCreation, setShowProfileCreation] = useState(false);
 
   const addFrame = useAddFrame();
@@ -112,6 +113,7 @@ export default function App() {
           {activeTab === "home" && <Home setActiveTab={setActiveTab} />}
           {activeTab === "features" && <Features setActiveTab={setActiveTab} />}
           {activeTab === "prediction-market" && <PredictionMarket setActiveTab={setActiveTab} />}
+          {activeTab === "chemistry-lab" && <ChemistryLab setActiveTab={setActiveTab} />}
           {activeTab === "profile" && (
             showProfileCreation ? (
               <GaslessProfileCreation 
