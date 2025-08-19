@@ -18,130 +18,131 @@
   --app-card-border: rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --app-background: #111111;
-    --app-foreground: #ffffff;
-    --app-foreground-muted: #c8c8d1;
-    --app-accent: #0052ff;
-    --app-accent-hover: #0047e1;
-    --app-accent-active: #003db8;
-    --app-accent-light: #1e293b;
-    --app-gray: #1e1e1e;
-    --app-gray-dark: #2e2e2e;
-    --app-card-bg: rgba(17, 17, 17, 0.4);
-    --app-card-border: rgba(115, 115, 115, 0.5);
+/* Dark mode now handled by OnchainKit theme classes */
+.dark {
+  --app-background: #111111;
+  --app-foreground: #ffffff;
+  --app-foreground-muted: #c8c8d1;
+  --app-accent: #0052ff;
+  --app-accent-hover: #0047e1;
+  --app-accent-active: #003db8;
+  --app-accent-light: #1e293b;
+  --app-gray: #1e1e1e;
+  --app-gray-dark: #2e2e2e;
+  --app-card-bg: rgba(17, 17, 17, 0.4);
+  --app-card-border: rgba(115, 115, 115, 0.5);
+}
+
+@layer base {
+  /* OnchainKit Base Dating Theme - Light Mode */
+  .base-dating-light {
+    --ock-font-family: "Geist", sans-serif;
+    --ock-border-radius: 0.75rem;
+    --ock-border-radius-inner: 0.5rem;
+
+    /* Text colors */
+    --ock-text-inverse: #ffffff;
+    --ock-text-foreground: #111111;
+    --ock-text-foreground-muted: #58585c;
+    --ock-text-error: #ef4444;
+    --ock-text-primary: #0052ff;
+    --ock-text-success: #22c55e;
+    --ock-text-warning: #f59e0b;
+    --ock-text-disabled: #a1a1aa;
+
+    /* Background colors */
+    --ock-bg-default: #ffffff;
+    --ock-bg-default-hover: #f5f5f5;
+    --ock-bg-default-active: #e0e0e0;
+    --ock-bg-alternate: #f5f5f5;
+    --ock-bg-alternate-hover: #e0e0e0;
+    --ock-bg-alternate-active: #e0e0e0;
+    --ock-bg-inverse: #111111;
+    --ock-bg-inverse-hover: #2a2a2a;
+    --ock-bg-inverse-active: #3a3a3a;
+    --ock-bg-primary: #0052ff;
+    --ock-bg-primary-hover: #0047e1;
+    --ock-bg-primary-active: #003db8;
+    --ock-bg-primary-washed: #e6edff;
+    --ock-bg-primary-disabled: #80a8ff;
+    --ock-bg-secondary: #f5f5f5;
+    --ock-bg-secondary-hover: #e0e0e0;
+    --ock-bg-secondary-active: #d1d1d1;
+    --ock-bg-error: #fee2e2;
+    --ock-bg-warning: #fef3c7;
+    --ock-bg-success: #dcfce7;
+    --ock-bg-default-reverse: #111111;
+
+    /* Icon colors */
+    --ock-icon-color-primary: #0052ff;
+    --ock-icon-color-foreground: #111111;
+    --ock-icon-color-foreground-muted: #71717a;
+    --ock-icon-color-inverse: #ffffff;
+    --ock-icon-color-error: #ef4444;
+    --ock-icon-color-success: #22c55e;
+    --ock-icon-color-warning: #f59e0b;
+
+    /* Line colors */
+    --ock-line-primary: #0052ff;
+    --ock-line-default: #e0e0e0;
+    --ock-line-heavy: #a1a1aa;
+    --ock-line-inverse: #d4d4d8;
   }
-}
 
-/* OnchainKit Base Dating Theme - Light Mode */
-.base-dating-light {
-  --ock-font-family: "Geist", sans-serif;
-  --ock-border-radius: 0.75rem;
-  --ock-border-radius-inner: 0.5rem;
+  /* OnchainKit Base Dating Theme - Dark Mode */
+  .base-dating-dark {
+    --ock-font-family: "Geist", sans-serif;
+    --ock-border-radius: 0.75rem;
+    --ock-border-radius-inner: 0.5rem;
 
-  /* Text colors */
-  --ock-text-inverse: #ffffff;
-  --ock-text-foreground: #111111;
-  --ock-text-foreground-muted: #58585c;
-  --ock-text-error: #ef4444;
-  --ock-text-primary: #0052ff;
-  --ock-text-success: #22c55e;
-  --ock-text-warning: #f59e0b;
-  --ock-text-disabled: #a1a1aa;
+    /* Text colors */
+    --ock-text-inverse: #111111;
+    --ock-text-foreground: #ffffff;
+    --ock-text-foreground-muted: #c8c8d1;
+    --ock-text-error: #ef4444;
+    --ock-text-primary: #0052ff;
+    --ock-text-success: #22c55e;
+    --ock-text-warning: #f59e0b;
+    --ock-text-disabled: #a1a1aa;
 
-  /* Background colors */
-  --ock-bg-default: #ffffff;
-  --ock-bg-default-hover: #f5f5f5;
-  --ock-bg-default-active: #e0e0e0;
-  --ock-bg-alternate: #f5f5f5;
-  --ock-bg-alternate-hover: #e0e0e0;
-  --ock-bg-alternate-active: #e0e0e0;
-  --ock-bg-inverse: #111111;
-  --ock-bg-inverse-hover: #2a2a2a;
-  --ock-bg-inverse-active: #3a3a3a;
-  --ock-bg-primary: #0052ff;
-  --ock-bg-primary-hover: #0047e1;
-  --ock-bg-primary-active: #003db8;
-  --ock-bg-primary-washed: #e6edff;
-  --ock-bg-primary-disabled: #80a8ff;
-  --ock-bg-secondary: #f5f5f5;
-  --ock-bg-secondary-hover: #e0e0e0;
-  --ock-bg-secondary-active: #d1d1d1;
-  --ock-bg-error: #fee2e2;
-  --ock-bg-warning: #fef3c7;
-  --ock-bg-success: #dcfce7;
-  --ock-bg-default-reverse: #111111;
+    /* Background colors */
+    --ock-bg-default: #111111;
+    --ock-bg-default-hover: #1e1e1e;
+    --ock-bg-default-active: #2e2e2e;
+    --ock-bg-alternate: #1e1e1e;
+    --ock-bg-alternate-hover: #2e2e2e;
+    --ock-bg-alternate-active: #2e2e2e;
+    --ock-bg-inverse: #ffffff;
+    --ock-bg-inverse-hover: #f5f5f5;
+    --ock-bg-inverse-active: #e0e0e0;
+    --ock-bg-primary: #0052ff;
+    --ock-bg-primary-hover: #0047e1;
+    --ock-bg-primary-active: #003db8;
+    --ock-bg-primary-washed: #1e293b;
+    --ock-bg-primary-disabled: #80a8ff;
+    --ock-bg-secondary: #1e1e1e;
+    --ock-bg-secondary-hover: #2e2e2e;
+    --ock-bg-secondary-active: #3e3e3e;
+    --ock-bg-error: #7f1d1d;
+    --ock-bg-warning: #78350f;
+    --ock-bg-success: #14532d;
+    --ock-bg-default-reverse: #ffffff;
 
-  /* Icon colors */
-  --ock-icon-color-primary: #0052ff;
-  --ock-icon-color-foreground: #111111;
-  --ock-icon-color-foreground-muted: #71717a;
-  --ock-icon-color-inverse: #ffffff;
-  --ock-icon-color-error: #ef4444;
-  --ock-icon-color-success: #22c55e;
-  --ock-icon-color-warning: #f59e0b;
+    /* Icon colors */
+    --ock-icon-color-primary: #0052ff;
+    --ock-icon-color-foreground: #ffffff;
+    --ock-icon-color-foreground-muted: #a1a1aa;
+    --ock-icon-color-inverse: #111111;
+    --ock-icon-color-error: #ef4444;
+    --ock-icon-color-success: #22c55e;
+    --ock-icon-color-warning: #f59e0b;
 
-  /* Line colors */
-  --ock-line-primary: #0052ff;
-  --ock-line-default: #e0e0e0;
-  --ock-line-heavy: #a1a1aa;
-  --ock-line-inverse: #d4d4d8;
-}
-
-/* OnchainKit Base Dating Theme - Dark Mode */
-.base-dating-dark {
-  --ock-font-family: "Geist", sans-serif;
-  --ock-border-radius: 0.75rem;
-  --ock-border-radius-inner: 0.5rem;
-
-  /* Text colors */
-  --ock-text-inverse: #111111;
-  --ock-text-foreground: #ffffff;
-  --ock-text-foreground-muted: #c8c8d1;
-  --ock-text-error: #ef4444;
-  --ock-text-primary: #0052ff;
-  --ock-text-success: #22c55e;
-  --ock-text-warning: #f59e0b;
-  --ock-text-disabled: #a1a1aa;
-
-  /* Background colors */
-  --ock-bg-default: #111111;
-  --ock-bg-default-hover: #1e1e1e;
-  --ock-bg-default-active: #2e2e2e;
-  --ock-bg-alternate: #1e1e1e;
-  --ock-bg-alternate-hover: #2e2e2e;
-  --ock-bg-alternate-active: #2e2e2e;
-  --ock-bg-inverse: #ffffff;
-  --ock-bg-inverse-hover: #f5f5f5;
-  --ock-bg-inverse-active: #e0e0e0;
-  --ock-bg-primary: #0052ff;
-  --ock-bg-primary-hover: #0047e1;
-  --ock-bg-primary-active: #003db8;
-  --ock-bg-primary-washed: #1e293b;
-  --ock-bg-primary-disabled: #80a8ff;
-  --ock-bg-secondary: #1e1e1e;
-  --ock-bg-secondary-hover: #2e2e2e;
-  --ock-bg-secondary-active: #3e3e3e;
-  --ock-bg-error: #7f1d1d;
-  --ock-bg-warning: #78350f;
-  --ock-bg-success: #14532d;
-  --ock-bg-default-reverse: #ffffff;
-
-  /* Icon colors */
-  --ock-icon-color-primary: #0052ff;
-  --ock-icon-color-foreground: #ffffff;
-  --ock-icon-color-foreground-muted: #a1a1aa;
-  --ock-icon-color-inverse: #111111;
-  --ock-icon-color-error: #ef4444;
-  --ock-icon-color-success: #22c55e;
-  --ock-icon-color-warning: #f59e0b;
-
-  /* Line colors */
-  --ock-line-primary: #0052ff;
-  --ock-line-default: #2e2e2e;
-  --ock-line-heavy: #525252;
-  --ock-line-inverse: #71717a;
+    /* Line colors */
+    --ock-line-primary: #0052ff;
+    --ock-line-default: #2e2e2e;
+    --ock-line-heavy: #525252;
+    --ock-line-inverse: #71717a;
+  }
 }
 
 * {
