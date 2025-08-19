@@ -34,58 +34,114 @@
   }
 }
 
-.mini-app-theme {
+/* OnchainKit Base Dating Theme - Light Mode */
+.base-dating-light {
   --ock-font-family: "Geist", sans-serif;
   --ock-border-radius: 0.75rem;
   --ock-border-radius-inner: 0.5rem;
 
   /* Text colors */
-  --ock-text-inverse: var(--app-background);
-  --ock-text-foreground: var(--app-foreground);
-  --ock-text-foreground-muted: var(--app-foreground-muted);
+  --ock-text-inverse: #ffffff;
+  --ock-text-foreground: #111111;
+  --ock-text-foreground-muted: #58585c;
   --ock-text-error: #ef4444;
-  --ock-text-primary: var(--app-accent);
+  --ock-text-primary: #0052ff;
   --ock-text-success: #22c55e;
   --ock-text-warning: #f59e0b;
   --ock-text-disabled: #a1a1aa;
 
   /* Background colors */
-  --ock-bg-default: var(--app-background);
-  --ock-bg-default-hover: var(--app-gray);
-  --ock-bg-default-active: var(--app-gray-dark);
-  --ock-bg-alternate: var(--app-gray);
-  --ock-bg-alternate-hover: var(--app-gray-dark);
-  --ock-bg-alternate-active: var(--app-gray-dark);
-  --ock-bg-inverse: var(--app-foreground);
+  --ock-bg-default: #ffffff;
+  --ock-bg-default-hover: #f5f5f5;
+  --ock-bg-default-active: #e0e0e0;
+  --ock-bg-alternate: #f5f5f5;
+  --ock-bg-alternate-hover: #e0e0e0;
+  --ock-bg-alternate-active: #e0e0e0;
+  --ock-bg-inverse: #111111;
   --ock-bg-inverse-hover: #2a2a2a;
   --ock-bg-inverse-active: #3a3a3a;
-  --ock-bg-primary: var(--app-accent);
-  --ock-bg-primary-hover: var(--app-accent-hover);
-  --ock-bg-primary-active: var(--app-accent-active);
-  --ock-bg-primary-washed: var(--app-accent-light);
+  --ock-bg-primary: #0052ff;
+  --ock-bg-primary-hover: #0047e1;
+  --ock-bg-primary-active: #003db8;
+  --ock-bg-primary-washed: #e6edff;
   --ock-bg-primary-disabled: #80a8ff;
-  --ock-bg-secondary: var(--app-gray);
-  --ock-bg-secondary-hover: var(--app-gray-dark);
+  --ock-bg-secondary: #f5f5f5;
+  --ock-bg-secondary-hover: #e0e0e0;
   --ock-bg-secondary-active: #d1d1d1;
   --ock-bg-error: #fee2e2;
   --ock-bg-warning: #fef3c7;
   --ock-bg-success: #dcfce7;
-  --ock-bg-default-reverse: var(--app-foreground);
+  --ock-bg-default-reverse: #111111;
 
   /* Icon colors */
-  --ock-icon-color-primary: var(--app-accent);
-  --ock-icon-color-foreground: var(--app-foreground);
+  --ock-icon-color-primary: #0052ff;
+  --ock-icon-color-foreground: #111111;
   --ock-icon-color-foreground-muted: #71717a;
-  --ock-icon-color-inverse: var(--app-background);
+  --ock-icon-color-inverse: #ffffff;
   --ock-icon-color-error: #ef4444;
   --ock-icon-color-success: #22c55e;
   --ock-icon-color-warning: #f59e0b;
 
   /* Line colors */
-  --ock-line-primary: var(--app-accent);
-  --ock-line-default: var(--app-gray-dark);
+  --ock-line-primary: #0052ff;
+  --ock-line-default: #e0e0e0;
   --ock-line-heavy: #a1a1aa;
   --ock-line-inverse: #d4d4d8;
+}
+
+/* OnchainKit Base Dating Theme - Dark Mode */
+.base-dating-dark {
+  --ock-font-family: "Geist", sans-serif;
+  --ock-border-radius: 0.75rem;
+  --ock-border-radius-inner: 0.5rem;
+
+  /* Text colors */
+  --ock-text-inverse: #111111;
+  --ock-text-foreground: #ffffff;
+  --ock-text-foreground-muted: #c8c8d1;
+  --ock-text-error: #ef4444;
+  --ock-text-primary: #0052ff;
+  --ock-text-success: #22c55e;
+  --ock-text-warning: #f59e0b;
+  --ock-text-disabled: #a1a1aa;
+
+  /* Background colors */
+  --ock-bg-default: #111111;
+  --ock-bg-default-hover: #1e1e1e;
+  --ock-bg-default-active: #2e2e2e;
+  --ock-bg-alternate: #1e1e1e;
+  --ock-bg-alternate-hover: #2e2e2e;
+  --ock-bg-alternate-active: #2e2e2e;
+  --ock-bg-inverse: #ffffff;
+  --ock-bg-inverse-hover: #f5f5f5;
+  --ock-bg-inverse-active: #e0e0e0;
+  --ock-bg-primary: #0052ff;
+  --ock-bg-primary-hover: #0047e1;
+  --ock-bg-primary-active: #003db8;
+  --ock-bg-primary-washed: #1e293b;
+  --ock-bg-primary-disabled: #80a8ff;
+  --ock-bg-secondary: #1e1e1e;
+  --ock-bg-secondary-hover: #2e2e2e;
+  --ock-bg-secondary-active: #3e3e3e;
+  --ock-bg-error: #7f1d1d;
+  --ock-bg-warning: #78350f;
+  --ock-bg-success: #14532d;
+  --ock-bg-default-reverse: #ffffff;
+
+  /* Icon colors */
+  --ock-icon-color-primary: #0052ff;
+  --ock-icon-color-foreground: #ffffff;
+  --ock-icon-color-foreground-muted: #a1a1aa;
+  --ock-icon-color-inverse: #111111;
+  --ock-icon-color-error: #ef4444;
+  --ock-icon-color-success: #22c55e;
+  --ock-icon-color-warning: #f59e0b;
+
+  /* Line colors */
+  --ock-line-primary: #0052ff;
+  --ock-line-default: #2e2e2e;
+  --ock-line-heavy: #525252;
+  --ock-line-inverse: #71717a;
 }
 
 * {
