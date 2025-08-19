@@ -74,6 +74,7 @@ export interface Milestone {
     type: 'MESSAGES_50' | 'FIRST_DATE' | 'THREE_DATES' | 'STILL_CHATTING';
     title: string;
     description: string;
+    duration: 'short' | 'medium' | 'long'; // Duration category for pricing
     multiplier: number; // 100 = 1.0x, 200 = 2.0x
     deadline: Date;
     minBackingAmount: number; // USDC amount in smallest unit (6 decimals)

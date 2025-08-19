@@ -29,6 +29,7 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'MESSAGES_50',
         title: "Exchange 50+ messages in 7 days",
         description: "They're already at 30 messages in 2 days!",
+        duration: 'short',
         multiplier: 200, // 2.0x
         deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days from now
         minBackingAmount: 500000, // $0.50 USDC
@@ -41,6 +42,7 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'FIRST_DATE',
         title: "Go on first date within 14 days",
         description: "Alex already suggested visiting that art gallery Sam mentioned",
+        duration: 'medium',
         multiplier: 150, // 1.5x
         deadline: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000), // 12 days from now
         minBackingAmount: 1000000, // $1.00 USDC
@@ -53,9 +55,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'THREE_DATES',
         title: "3+ dates in 30 days",
         description: "Will their creative chemistry translate to real romance?",
+        duration: 'long',
         multiplier: 100, // 1.0x
         deadline: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000), // 28 days from now
-        minBackingAmount: 2000000, // $2.00 USDC
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -65,6 +68,7 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'STILL_CHATTING',
         title: "Still chatting after 30 days",
         description: "Long-term compatibility vibes are strong",
+        duration: 'long',
         multiplier: 120, // 1.2x
         deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
         minBackingAmount: 1500000, // $1.50 USDC
@@ -100,9 +104,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'MESSAGES_50',
         title: "Exchange 50+ messages in 7 days",
         description: "Already at 45 messages with no signs of slowing down!",
+        duration: 'short',
         multiplier: 200,
         deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
-        minBackingAmount: 500000,
+        minBackingAmount: 500000, // $0.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -112,9 +117,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'FIRST_DATE',
         title: "Go on first date within 14 days", 
         description: "Taylor suggested a dog park meetup - genius first date!",
+        duration: 'medium',
         multiplier: 150,
         deadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1000000,
+        minBackingAmount: 1000000, // $1.00 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -124,9 +130,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'THREE_DATES',
         title: "3+ dates in 30 days",
         description: "With this much in common, multiple dates seem inevitable",
+        duration: 'long',
         multiplier: 100,
         deadline: new Date(Date.now() + 26 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 2000000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -136,9 +143,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'STILL_CHATTING',
         title: "Still chatting after 30 days",
         description: "Shared values and lifestyle - built to last?",
+        duration: 'long',
         multiplier: 120,
         deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1500000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -171,9 +179,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'MESSAGES_50',
         title: "Exchange 50+ messages in 7 days",
         description: "Started with philosophical discussions - quality over quantity so far",
+        duration: 'short',
         multiplier: 200,
         deadline: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 500000,
+        minBackingAmount: 500000, // $0.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -183,9 +192,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'FIRST_DATE',
         title: "Go on first date within 14 days",
         description: "Rio mentioned wanting to cook for someone special...",
+        duration: 'medium',
         multiplier: 150,
         deadline: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1000000,
+        minBackingAmount: 1000000, // $1.00 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -195,9 +205,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'THREE_DATES',
         title: "3+ dates in 30 days",
         description: "Different personalities - will opposites attract?",
+        duration: 'long',
         multiplier: 100,
         deadline: new Date(Date.now() + 29 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 2000000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -207,9 +218,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'STILL_CHATTING',
         title: "Still chatting after 30 days",
         description: "Mindful approach might lead to something lasting",
+        duration: 'long',
         multiplier: 120,
         deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1500000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -242,9 +254,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'MESSAGES_50',
         title: "Exchange 50+ messages in 7 days",
         description: "Voice messages and music sharing count as messages, right?",
+        duration: 'short',
         multiplier: 200,
         deadline: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 500000,
+        minBackingAmount: 500000, // $0.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -254,9 +267,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'FIRST_DATE',
         title: "Go on first date within 14 days",
         description: "Concert tickets are already purchased!",
+        duration: 'medium',
         multiplier: 150,
         deadline: new Date(Date.now() + 11 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1000000,
+        minBackingAmount: 1000000, // $1.00 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -266,9 +280,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'THREE_DATES',
         title: "3+ dates in 30 days",
         description: "Shared passion for music = endless date ideas",
+        duration: 'long',
         multiplier: 100,
         deadline: new Date(Date.now() + 27 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 2000000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -278,9 +293,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'STILL_CHATTING',
         title: "Still chatting after 30 days", 
         description: "When you speak the same language (music), it's magic",
+        duration: 'long',
         multiplier: 120,
         deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1500000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -313,9 +329,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'MESSAGES_50',
         title: "Exchange 50+ messages in 7 days",
         description: "Deep conversations about saving the planet - already at 40+ messages",
+        duration: 'short',
         multiplier: 200,
         deadline: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), // 1 day from now!
-        minBackingAmount: 500000,
+        minBackingAmount: 500000, // $0.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -325,9 +342,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'FIRST_DATE',
         title: "Go on first date within 14 days",
         description: "Beach cleanup date planned for this weekend!",
+        duration: 'medium',
         multiplier: 150,
         deadline: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1000000,
+        minBackingAmount: 1000000, // $1.00 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -337,9 +355,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'THREE_DATES',
         title: "3+ dates in 30 days",
         description: "Shared mission = multiple reasons to meet up",
+        duration: 'long',
         multiplier: 100,
         deadline: new Date(Date.now() + 24 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 2000000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false
@@ -349,9 +368,10 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
         type: 'STILL_CHATTING',
         title: "Still chatting after 30 days",
         description: "Changing the world together - relationship goals!",
+        duration: 'long',
         multiplier: 120,
         deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        minBackingAmount: 1500000,
+        minBackingAmount: 1500000, // $1.50 USDC
         totalBacked: 0,
         totalBackers: 0,
         resolved: false

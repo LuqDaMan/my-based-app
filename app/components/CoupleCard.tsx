@@ -75,13 +75,18 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
       <div className="grid grid-cols-2 gap-3 p-4">
         {/* Partner 1 */}
         <div className="text-center">
-          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-purple-200">
+          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-purple-200 bg-purple-100 flex items-center justify-center">
             <Image
               src={couple.partner1.avatar}
               alt={couple.partner1.name}
               width={64}
               height={64}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.parentElement!.innerHTML = `<div class="text-purple-600 font-bold text-lg">${couple.partner1.name.charAt(0)}</div>`;
+              }}
             />
           </div>
           <h3 className="font-semibold text-sm text-gray-800">{couple.partner1.name}</h3>
@@ -100,13 +105,18 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
 
         {/* Partner 2 */}
         <div className="text-center">
-          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-pink-200">
+          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-pink-200 bg-pink-100 flex items-center justify-center">
             <Image
               src={couple.partner2.avatar}
               alt={couple.partner2.name}
               width={64}
               height={64}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.parentElement!.innerHTML = `<div class="text-pink-600 font-bold text-lg">${couple.partner2.name.charAt(0)}</div>`;
+              }}
             />
           </div>
           <h3 className="font-semibold text-sm text-gray-800">{couple.partner2.name}</h3>
@@ -131,7 +141,14 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
             <Icon name="message-circle" size="xs" className="text-gray-500" />
             <span className="text-xs font-medium text-gray-700">Their Story</span>
           </div>
-          <p className="text-xs text-gray-600 line-clamp-3">{couple.backstory}</p>
+          <div className="max-h-12 overflow-hidden">
+            <p className="text-xs text-gray-600 leading-relaxed break-words">
+              {couple.backstory.length > 120 
+                ? `${couple.backstory.substring(0, 120)}...` 
+                : couple.backstory
+              }
+            </p>
+          </div>
         </div>
       </div>
 

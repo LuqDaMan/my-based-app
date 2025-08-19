@@ -51,13 +51,6 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
     }
   };
 
-  const handleAmountChange = (milestoneId: number, amount: number) => {
-    setSelectedMilestones(prev => prev.map(m => 
-      m.id === milestoneId 
-        ? { ...m, backingAmount: Math.max(amount, m.minBackingAmount) }
-        : m
-    ));
-  };
 
   const getTotalBacking = () => {
     return selectedMilestones.reduce((sum, m) => sum + m.backingAmount, 0);
@@ -139,13 +132,18 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
           <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50">
             <div className="flex items-center justify-center space-x-4 mb-3">
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-purple-200">
+                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-purple-200 bg-purple-100 flex items-center justify-center">
                   <Image
                     src={couple.partner1.avatar}
                     alt={couple.partner1.name}
                     width={48}
                     height={48}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.innerHTML = `<div class="text-purple-600 font-bold text-sm">${couple.partner1.name.charAt(0)}</div>`;
+                    }}
                   />
                 </div>
                 <p className="text-xs font-medium mt-1">{couple.partner1.name}</p>
@@ -159,13 +157,18 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-pink-200">
+                <div className="w-12 h-12 rounded-full overflow-hidden mx-auto border-2 border-pink-200 bg-pink-100 flex items-center justify-center">
                   <Image
                     src={couple.partner2.avatar}
                     alt={couple.partner2.name}
                     width={48}
                     height={48}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.innerHTML = `<div class="text-pink-600 font-bold text-sm">${couple.partner2.name.charAt(0)}</div>`;
+                    }}
                   />
                 </div>
                 <p className="text-xs font-medium mt-1">{couple.partner2.name}</p>
@@ -200,6 +203,10 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center space-x-2">
+                        <div className={`w-3 h-3 rounded-full ${
+                          milestone.duration === 'short' ? 'bg-green-500' :
+                          milestone.duration === 'medium' ? 'bg-yellow-500' : 'bg-red-500'
+                        }`}></div>
                         <Icon 
                           name={getMilestoneTypeIcon(milestone.type) as 'message-circle' | 'calendar' | 'heart' | 'clock' | 'target'} 
                           size="sm" 
@@ -211,6 +218,12 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
                       </div>
                       
                       <div className="flex items-center space-x-2">
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          milestone.duration === 'short' ? 'bg-green-100 text-green-700' :
+                          milestone.duration === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
+                        }`}>
+                          ${(milestone.minBackingAmount / 1000000).toFixed(2)}
+                        </span>
                         {isSelected && (
                           <Icon name="check-circle" size="sm" className="text-purple-600" />
                         )}
@@ -228,29 +241,32 @@ export function BackingModal({ couple, onClose, onBackingComplete }: BackingModa
                       </span>
                     </div>
                     
-                    {/* Amount input for selected milestones */}
+                    {/* Fixed amount display for selected milestones */}
                     {isSelected && selectedMilestone && (
                       <div className="mt-3 pt-3 border-t border-purple-200">
-                        <label className="block text-xs font-medium text-gray-700 mb-1">
-                          Backing Amount (USDC)
-                        </label>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm text-gray-500">$</span>
-                          <input
-                            type="number"
-                            min={milestone.minBackingAmount / 1000000}
-                            step="0.50"
-                            value={(selectedMilestone.backingAmount / 1000000).toFixed(2)}
-                            onChange={(e) => handleAmountChange(
-                              milestone.id, 
-                              Math.floor(parseFloat(e.target.value || '0') * 1000000)
-                            )}
-                            className="flex-1 text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-purple-500"
-                            onClick={(e) => e.stopPropagation()}
-                          />
-                          <span className="text-xs text-gray-500">
-                            → ${(selectedMilestone.backingAmount / 1000000).toFixed(2)} if wins
-                          </span>
+                        <div className="bg-white rounded-lg p-3 border border-purple-200">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <div className={`w-2 h-2 rounded-full ${
+                                  milestone.duration === 'short' ? 'bg-green-500' :
+                                  milestone.duration === 'medium' ? 'bg-yellow-500' : 'bg-red-500'
+                                }`}></div>
+                                <span className="text-xs font-medium text-gray-700 capitalize">
+                                  {milestone.duration} Term
+                                </span>
+                              </div>
+                              <div className="text-lg font-bold text-purple-600">
+                                ${(milestone.minBackingAmount / 1000000).toFixed(2)} USDC
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-xs text-gray-500">Potential Win</div>
+                              <div className="text-sm font-semibold text-green-600">
+                                ${((milestone.minBackingAmount * milestone.multiplier) / 100 / 1000000).toFixed(2)}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     )}
