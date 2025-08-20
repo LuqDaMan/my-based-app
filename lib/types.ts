@@ -31,6 +31,7 @@ export interface UserProfile {
     displayName: string;
     avatar: string;
     walletAddress?: string;
+    basename?: string; // Base ENS name like "user.base.eth"
     totalPredictions: number;
     correctPredictions: number;
     totalWinnings: bigint;
@@ -54,6 +55,8 @@ export interface FictionalCouple {
         bio: string;
         avatar: string;
         interests: string[];
+        walletAddress?: string;
+        basename?: string; // Base ENS name like "user.base.eth"
     };
     partner2: {
         name: string;
@@ -61,6 +64,8 @@ export interface FictionalCouple {
         bio: string;
         avatar: string;
         interests: string[];
+        walletAddress?: string;
+        basename?: string; // Base ENS name like "user.base.eth"
     };
     matchedAt: Date;
     chemistryScore: number; // 0-100 visual indicator

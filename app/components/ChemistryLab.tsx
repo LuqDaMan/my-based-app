@@ -7,6 +7,7 @@ import { CoupleSwipeStack } from './CoupleSwipeStack';
 import { BackingModal } from './BackingModal';
 import { Button } from './DemoComponents';
 import { Icon } from './DemoComponents';
+import { ShareToFarcaster, ConnectFarcaster } from './FarcasterIntegration';
 
 interface ChemistryLabProps {
   setActiveTab?: (tab: string) => void;
@@ -73,8 +74,8 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-purple-600 border-t-transparent"></div>
-        <p className="text-purple-600 font-medium">Loading Chemistry Lab...</p>
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-600 border-t-transparent"></div>
+        <p className="text-blue-600 font-medium">Loading Chemistry Lab...</p>
       </div>
     );
   }
@@ -90,7 +91,7 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
           onClick={fetchCouples}
           variant="ghost"
           size="sm"
-          className="text-purple-600"
+          className="text-blue-600"
         >
           Try Again
         </Button>
@@ -129,7 +130,7 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
         {!setActiveTab && <div />}
         
         <div className="text-center">
-          <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Chemistry Lab
           </h1>
           <p className="text-xs text-gray-500 mt-1">
@@ -151,7 +152,7 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
       </div>
 
       {/* Instructions */}
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 mb-4">
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 mb-4">
         <div className="flex items-center justify-between text-xs text-gray-600">
           <div className="flex items-center space-x-1">
             <Icon name="arrow-left" size="xs" />
@@ -168,6 +169,17 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
         </div>
       </div>
 
+      {/* Share Current Couple */}
+      {couples[currentCoupleIndex] && (
+        <div className="flex justify-center mb-4">
+          <ShareToFarcaster
+            couple={couples[currentCoupleIndex]}
+            type="match"
+            className="text-xs"
+          />
+        </div>
+      )}
+
       {/* Swipe Stack */}
       <div className="flex-1 relative">
         <CoupleSwipeStack
@@ -179,21 +191,34 @@ export function ChemistryLab({ setActiveTab }: ChemistryLabProps = {}) {
 
       {/* End of couples message */}
       {!hasMoreCouples && currentCoupleIndex >= couples.length - 1 && (
-        <div className="text-center mt-4 p-4 bg-gray-50 rounded-lg">
-          <Icon name="check-circle" size="lg" className="mx-auto mb-2 text-green-500" />
-          <p className="font-medium text-gray-700">You&apos;ve seen all couples!</p>
-          <p className="text-sm text-gray-500 mt-1">
-            Check back later for new matches to support
-          </p>
-          {setActiveTab && (
-            <Button
-              onClick={() => setActiveTab('portfolio')}
-              className="mt-3"
-              size="sm"
-            >
-              View My Backings
-            </Button>
-          )}
+        <div className="space-y-4 mt-4">
+          <div className="text-center p-4 bg-gray-50 rounded-lg">
+            <Icon name="check-circle" size="lg" className="mx-auto mb-2 text-green-500" />
+            <p className="font-medium text-gray-700">You&apos;ve seen all couples!</p>
+            <p className="text-sm text-gray-500 mt-1">
+              Check back later for new matches to support
+            </p>
+            {setActiveTab && (
+              <Button
+                onClick={() => setActiveTab('portfolio')}
+                className="mt-3"
+                size="sm"
+              >
+                View My Backings
+              </Button>
+            )}
+          </div>
+          
+          {/* Social Connection Prompt */}
+          <ConnectFarcaster />
+          
+          {/* Share Lab Results */}
+          <div className="flex justify-center">
+            <ShareToFarcaster
+              couple={couples[0]} // Use first couple as fallback
+              type="result"
+            />
+          </div>
         </div>
       )}
 

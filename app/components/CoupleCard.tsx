@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FictionalCouple } from '@/lib/types';
 import { Icon } from './DemoComponents';
 import { Badge } from '@coinbase/onchainkit/identity';
+import { CompactBaseIdentity } from './BaseIdentity';
 
 interface CoupleCardProps {
   couple: FictionalCouple;
@@ -48,10 +49,10 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
       ${isBackground ? 'opacity-80' : ''}
     `}>
       {/* Header with match info */}
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4">
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2">
-            <Icon name="heart" size="sm" className="text-pink-500" />
+            <Icon name="heart" size="sm" className="text-blue-500" />
             <span className="text-sm font-medium text-gray-700">
               Matched {getDaysAgo(couple.matchedAt)}
             </span>
@@ -82,7 +83,7 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
       <div className="grid grid-cols-2 gap-3 p-4">
         {/* Partner 1 */}
         <div className="text-center">
-          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-purple-200 bg-purple-100 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-blue-200 bg-blue-100 flex items-center justify-center">
             <Image
               src={couple.partner1.avatar}
               alt={couple.partner1.name}
@@ -92,18 +93,25 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
-                target.parentElement!.innerHTML = `<div class="text-purple-600 font-bold text-lg">${couple.partner1.name.charAt(0)}</div>`;
+                target.parentElement!.innerHTML = `<div class="text-blue-600 font-bold text-lg">${couple.partner1.name.charAt(0)}</div>`;
               }}
             />
           </div>
           <h3 className="font-semibold text-sm text-gray-800">{couple.partner1.name}</h3>
           <p className="text-xs text-gray-600">{couple.partner1.age} years old</p>
+          {couple.partner1.basename && (
+            <CompactBaseIdentity 
+              address={couple.partner1.walletAddress}
+              basename={couple.partner1.basename}
+              className="justify-center mt-1"
+            />
+          )}
           <p className="text-xs text-gray-500 mt-1 line-clamp-2">{couple.partner1.bio}</p>
           
           {/* Interests */}
           <div className="flex flex-wrap gap-1 mt-2 justify-center">
             {couple.partner1.interests.slice(0, 2).map((interest, idx) => (
-              <span key={idx} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
+              <span key={idx} className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
                 {interest}
               </span>
             ))}
@@ -112,7 +120,7 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
 
         {/* Partner 2 */}
         <div className="text-center">
-          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-pink-200 bg-pink-100 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-purple-200 bg-purple-100 flex items-center justify-center">
             <Image
               src={couple.partner2.avatar}
               alt={couple.partner2.name}
@@ -122,18 +130,25 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
-                target.parentElement!.innerHTML = `<div class="text-pink-600 font-bold text-lg">${couple.partner2.name.charAt(0)}</div>`;
+                target.parentElement!.innerHTML = `<div class="text-purple-600 font-bold text-lg">${couple.partner2.name.charAt(0)}</div>`;
               }}
             />
           </div>
           <h3 className="font-semibold text-sm text-gray-800">{couple.partner2.name}</h3>
           <p className="text-xs text-gray-600">{couple.partner2.age} years old</p>
+          {couple.partner2.basename && (
+            <CompactBaseIdentity 
+              address={couple.partner2.walletAddress}
+              basename={couple.partner2.basename}
+              className="justify-center mt-1"
+            />
+          )}
           <p className="text-xs text-gray-500 mt-1 line-clamp-2">{couple.partner2.bio}</p>
           
           {/* Interests */}
           <div className="flex flex-wrap gap-1 mt-2 justify-center">
             {couple.partner2.interests.slice(0, 2).map((interest, idx) => (
-              <span key={idx} className="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded-full">
+              <span key={idx} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
                 {interest}
               </span>
             ))}
@@ -162,7 +177,7 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
       {/* Milestones Preview */}
       <div className="px-4 pb-4">
         <h4 className="text-sm font-semibold text-gray-800 mb-2 flex items-center">
-          <Icon name="target" size="sm" className="mr-1 text-purple-500" />
+          <Icon name="target" size="sm" className="mr-1 text-blue-500" />
           Milestones to Back
         </h4>
         <div className="space-y-2">
@@ -174,7 +189,7 @@ export function CoupleCard({ couple, isBackground = false }: CoupleCardProps) {
                   <p className="text-xs text-gray-500 mt-1">{milestone.description}</p>
                 </div>
                 <div className="text-right ml-2">
-                  <p className="text-xs font-bold text-purple-600">
+                  <p className="text-xs font-bold text-blue-600">
                     {formatCurrency(milestone.minBackingAmount)} min
                   </p>
                   <p className="text-xs text-gray-500">

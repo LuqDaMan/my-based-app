@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
-import { baseSepolia } from "wagmi/chains";
+import { base, baseSepolia } from "wagmi/chains";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
 
 export function useNetworkSwitch() {
@@ -10,7 +10,10 @@ export function useNetworkSwitch() {
   const { context } = useMiniKit();
   const [, setCurrentChainId] = useState<string | null>(null);
 
-  const isCorrectNetwork = chain?.id === baseSepolia.id;
+  // Support both Base mainnet and testnet
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const targetChain = isDevelopment ? baseSepolia : base;
+  const isCorrectNetwork = chain?.id === targetChain.id;
 
   // Monitor chain changes via window.ethereum (for detection only)
   useEffect(() => {
@@ -38,10 +41,14 @@ export function useNetworkSwitch() {
   // For MiniKit apps, we should guide users to switch manually
   // rather than programmatically switching which can interfere with MiniKit
   const promptNetworkSwitch = () => {
-    // In MiniKit context, provide instructions rather than auto-switching
+    const networkName = isDevelopment ? 'Base Sepolia' : 'Base';
+    const chainId = isDevelopment ? '84532' : '8453';
+    
     return {
       shouldShowWarning: !isCorrectNetwork,
-      instructions: `Please switch to Base Sepolia (Chain ID: 84532) in your wallet settings to use gasless transactions.`,
+      instructions: `Please switch to ${networkName} (Chain ID: ${chainId}) in your wallet settings to use this app on the Base ecosystem.`,
+      targetChain,
+      isMainnet: !isDevelopment,
     };
   };
 

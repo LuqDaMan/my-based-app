@@ -10,14 +10,18 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
       age: 28,
       bio: "Software engineer who loves hiking and cooking",
       avatar: "https://i.pravatar.cc/150?u=alex",
-      interests: ["coding", "hiking", "cooking", "photography"]
+      interests: ["coding", "hiking", "cooking", "photography"],
+      walletAddress: "0x1234567890123456789012345678901234567890",
+      basename: "alexchen.base.eth"
     },
     partner2: {
       name: "Sam Rivera",
       age: 26, 
       bio: "Graphic designer with a passion for coffee and art",
       avatar: "https://i.pravatar.cc/150?u=sam",
-      interests: ["design", "coffee", "art", "traveling"]
+      interests: ["design", "coffee", "art", "traveling"],
+      walletAddress: "0x2345678901234567890123456789012345678901",
+      basename: "samrivera.base.eth"
     },
     matchedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
     chemistryScore: 87,
@@ -85,14 +89,18 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
       age: 31,
       bio: "Marketing manager who runs marathons and loves dogs",
       avatar: "https://i.pravatar.cc/150?u=jordan",
-      interests: ["running", "dogs", "marketing", "fitness"]
+      interests: ["running", "dogs", "marketing", "fitness"],
+      walletAddress: "0x3456789012345678901234567890123456789012",
+      basename: "jordanblake.base.eth"
     },
     partner2: {
       name: "Taylor Kim",
       age: 29,
       bio: "Veterinarian with a rescue dog and weekend hiking habit",
       avatar: "https://i.pravatar.cc/150?u=taylor", 
-      interests: ["animals", "hiking", "rescue dogs", "nature"]
+      interests: ["animals", "hiking", "rescue dogs", "nature"],
+      walletAddress: "0x4567890123456789012345678901234567890123"
+      // Taylor doesn't have a Basename - will show address instead
     },
     matchedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
     chemistryScore: 94,
@@ -160,14 +168,18 @@ const FICTIONAL_COUPLES: FictionalCouple[] = [
       age: 25,
       bio: "Data scientist who makes pottery in her spare time",
       avatar: "https://i.pravatar.cc/150?u=maya",
-      interests: ["data science", "pottery", "mindfulness", "tea"]
+      interests: ["data science", "pottery", "mindfulness", "tea"],
+      walletAddress: "0x5678901234567890123456789012345678901234",
+      basename: "mayapatel.base.eth"
     },
     partner2: {
       name: "Rio Santos",
       age: 27,
       bio: "Chef experimenting with fusion cuisine and meditation",
       avatar: "https://i.pravatar.cc/150?u=rio",
-      interests: ["cooking", "meditation", "fusion food", "philosophy"]
+      interests: ["cooking", "meditation", "fusion food", "philosophy"],
+      walletAddress: "0x6789012345678901234567890123456789012345"
+      // Rio doesn't have a Basename yet
     },
     matchedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // 1 day ago
     chemistryScore: 76,

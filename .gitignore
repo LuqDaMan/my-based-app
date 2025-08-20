@@ -23,6 +23,7 @@
 # editor directories
 .claude/
 .cursor/
+.llms/
 
 # debug
 npm-debug.log*
